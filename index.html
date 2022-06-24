@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<!--    <link rel="stylesheet" href="font-awesome.css" type="text/css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    
+    
+    <style>
+        *{margin: 0;
+        padding:0;
+        border: 0;
+        
+        }
+        
+        ul{list-style: none;}
+        
+        #slider{width:400px; height: 200px; margin: 20px;}
+        .slider{position: relative;}
+        .slider ul {display: flex; overflow:hidden;}
+        .slider ul li{width: 400px; height: 200px;}
+        .slider ul li img{  width:400px;height: 200px; object-fit:cover; border-radius: 5px;}
+        .right-arrow{position: absolute; top:calc(50% - 15px); right: 10px; color:white; font-size: 30px;}
+        .left-arrow{position: absolute; top:calc(50% - 15px); left: 10px; color:white; font-size: 30px;}
+        
+
+    </style>
+    
+</head>
+<body>
+    
+    <div id="slider">
+    <div class="slider">
+        <ul>
+        <li><a href="#"><img src="img/img-1.jpg"></a></li>
+        <li><a href="#"><img src="img/img-2.jpg"></a></li>
+        <li><a href="#"><img src="img/img-3.jpg"></a></li>
+        <li><a href="#"><img src="img/img-4.jpg"></a></li>
+        <li><a href="#"><img src="img/img-5.jpg"></a></li>
+        
+        
+        </ul>
+        <div class="right-arrow"><i class="fas fa-arrow-circle-right"></i></div>
+        <div class="left-arrow"><i class="fas fa-arrow-circle-left"></i></div>
+        
+        
+        </div>
+    
+    
+    </div>
+    
+    <script >
+    
+    $(document).ready(function () {
+
+
+        var sliderchild=1;
+        var maxindex=$(".slider ul li").length;
+         $(".right-arrow i").on("click",function(){
+             if(maxindex > sliderchild){
+           $(".slider ul li:nth-child("+sliderchild+")").css("order",1);
+                sliderchild++;
+             }
+             else{this.hide()}
+          });
+    
+        $(".left-arrow i").on("click",function(){
+           if(sliderchild > 1){
+            $(".slider ul li:nth-child("+(sliderchild-1)+")").css("order",0);
+            sliderchild--;
+             }
+            else{
+                this.hide();
+            }
+        });
+
+
+});
+    </script>
+</body>
+
+
+
+</html>
